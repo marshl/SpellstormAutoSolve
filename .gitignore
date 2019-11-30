@@ -1,3 +1,5 @@
 *.sdf
 SpellstormAutoSolve/Release/
 SpellstormAutoSolve/Debug/
+.vs/
+Debug/

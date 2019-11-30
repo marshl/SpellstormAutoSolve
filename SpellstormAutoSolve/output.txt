@@ -4,24 +4,366 @@ Usable cards:
  + Infernal Tutor is usable from hand
  + Brainspoil is usable from hand
  + Demonic Collusion is usable from hand
+Casting Brainspoil from hand
+Transmuted for Brainspoil
+Life: Player: 1 Opponent: 59	Lands: 16/19	Cast spells: 0
+
+ +++ STEP 2 +++ 
+Usable cards:
+ + Demonic Collusion is usable from hand
+ + Brainspoil is usable from hand
+Casting Demonic Collusion from hand
+Buybacked: discarding Brainspoil and Infernal Tutor
+Tutored for Snap
+Life: Player: 1 Opponent: 59	Lands: 12/19	Cast spells: 1
+
+ +++ STEP 3 +++ 
+Usable cards:
+ + Demonic Collusion is usable from hand
+Casting Demonic Collusion from hand
+Buybacked: discarding Betrayal of Flesh and Coercion
+Tutored for Great Whale
+Life: Player: 1 Opponent: 59	Lands: 8/19	Cast spells: 2
+
+ +++ STEP 4 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Demonic Collusion is usable from hand
+Casting Sneak Attack from battlefield
+Put Great Whale on the battlefield
+Life: Player: 1 Opponent: 59	Lands: 14/19	Cast spells: 2
+
+ +++ STEP 5 +++ 
+Usable cards:
+ + Snap is usable from hand
+ + Demonic Collusion is usable from hand
+Casting Snap from hand
+Returned Great Whale to hand
+Life: Player: 1 Opponent: 59	Lands: 15/19	Cast spells: 3
+
+ +++ STEP 6 +++ 
+Usable cards:
+ + Demonic Collusion is usable from hand
+Casting Demonic Collusion from hand
+Tutored for Past In Flames
+Life: Player: 1 Opponent: 59	Lands: 11/19	Cast spells: 4
+
+ +++ STEP 7 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Past In Flames is usable from hand
+Casting Past In Flames from hand
+Gave Infernal Tutor flashback
+Gave Betrayal of Flesh flashback
+Gave Snap flashback
+Gave Demonic Collusion flashback
+Gave Brainspoil flashback
+Gave Brainspoil flashback
+Gave Coercion flashback
+Gave Demonic Collusion flashback
+Life: Player: 1 Opponent: 59	Lands: 8/19	Cast spells: 5
+
+ +++ STEP 8 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Demonic Collusion is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Brainspoil from graveyard
+Transmuted for nothing
+Life: Player: 1 Opponent: 59	Lands: 5/19	Cast spells: 5
+
+ +++ STEP 9 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Demonic Collusion is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Demonic Collusion from graveyard
+Tutored for Hoodwink
+Life: Player: 1 Opponent: 59	Lands: 1/19	Cast spells: 6
+
+ +++ STEP 10 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Hoodwink is usable from hand
+Casting Hoodwink from hand
+Bounced land
+Life: Player: 1 Opponent: 59	Lands: 0/18	Cast spells: 7
+
+ +++ STEP 11 +++ 
+Usable cards:
+ + BASIC_LAND is usable from hand
+Casting BASIC_LAND from hand
+Put land on battlefield
+Life: Player: 1 Opponent: 59	Lands: 1/19	Cast spells: 7
+
+ +++ STEP 12 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+Casting Sneak Attack from battlefield
+Put Great Whale on the battlefield
+Life: Player: 1 Opponent: 59	Lands: 7/19	Cast spells: 7
+
+ +++ STEP 13 +++ 
+Usable cards:
+ + Demonic Collusion is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Betrayal of Flesh is usable from graveyard
+ + Snap is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Demonic Collusion from graveyard
+Tutored for Tendrils of Agony
+Life: Player: 1 Opponent: 59	Lands: 3/19	Cast spells: 8
+
+ +++ STEP 14 +++ 
+Usable cards:
+ + Tendrils of Agony is usable from hand
+ + Brainspoil is usable from graveyard
+ + Snap is usable from graveyard
+Casting Snap from graveyard
+Returned Great Whale to hand
+Life: Player: 1 Opponent: 59	Lands: 4/19	Cast spells: 9
+
+ +++ STEP 15 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Tendrils of Agony is usable from hand
+ + Brainspoil is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Tendrils of Agony from hand
+Hit with 10 tendrils
+Life: Player: 21 Opponent: 39	Lands: 1/19	Cast spells: 10
+
+ +++ STEP 16 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+Casting Sneak Attack from battlefield
+Put Great Whale on the battlefield
+Life: Player: 21 Opponent: 39	Lands: 7/19	Cast spells: 10
+
+ +++ STEP 17 +++ 
+Usable cards:
+ + Brainspoil is usable from graveyard
+ + Betrayal of Flesh is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Past In Flames from graveyard
+Gave Infernal Tutor flashback
+Gave Betrayal of Flesh flashback
+Gave Hoodwink flashback
+Gave Brainspoil flashback
+Gave Coercion flashback
+Gave Tendrils of Agony flashback
+Life: Player: 21 Opponent: 39	Lands: 3/19	Cast spells: 11
+
+ +++ STEP 18 +++ 
+Usable cards:
+ + Brainspoil is usable from graveyard
+ + Hoodwink is usable from graveyard
+ + Tendrils of Agony is usable from graveyard
+Casting Tendrils of Agony from graveyard
+Hit with 12 tendrils
+Life: Player: 45 Opponent: 15	Lands: 0/19	Cast spells: 12
+
+ +++ STEP 19 +++ 
+Usable cards:
+Out of usable cards
+--------------------------------------------------------------------------------
+
+
+ +++ STEP 1 +++ 
+Usable cards:
+ + Infernal Tutor is usable from hand
+ + Brainspoil is usable from hand
+ + Demonic Collusion is usable from hand
+Casting Brainspoil from hand
+Transmuted for Brainspoil
+Life: Player: 1 Opponent: 59	Lands: 16/19	Cast spells: 0
+
+ +++ STEP 2 +++ 
+Usable cards:
+ + Demonic Collusion is usable from hand
+ + Brainspoil is usable from hand
+Casting Demonic Collusion from hand
+Buybacked: discarding Coercion and Betrayal of Flesh
+Tutored for Snap
+Life: Player: 1 Opponent: 59	Lands: 12/19	Cast spells: 1
+
+ +++ STEP 3 +++ 
+Usable cards:
+ + Brainspoil is usable from hand
+ + Demonic Collusion is usable from hand
+Casting Demonic Collusion from hand
+Buybacked: discarding Brainspoil and Infernal Tutor
+Tutored for Great Whale
+Life: Player: 1 Opponent: 59	Lands: 8/19	Cast spells: 2
+
+ +++ STEP 4 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Demonic Collusion is usable from hand
+Casting Sneak Attack from battlefield
+Put Great Whale on the battlefield
+Life: Player: 1 Opponent: 59	Lands: 14/19	Cast spells: 2
+
+ +++ STEP 5 +++ 
+Usable cards:
+ + Snap is usable from hand
+ + Demonic Collusion is usable from hand
+Casting Demonic Collusion from hand
+Tutored for Past In Flames
+Life: Player: 1 Opponent: 59	Lands: 10/19	Cast spells: 3
+
+ +++ STEP 6 +++ 
+Usable cards:
+ + Snap is usable from hand
+ + Past In Flames is usable from hand
+Casting Snap from hand
+Returned Great Whale to hand
+Life: Player: 1 Opponent: 59	Lands: 11/19	Cast spells: 4
+
+ +++ STEP 7 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Past In Flames is usable from hand
+Casting Sneak Attack from battlefield
+Put Great Whale on the battlefield
+Life: Player: 1 Opponent: 59	Lands: 17/19	Cast spells: 4
+
+ +++ STEP 8 +++ 
+Usable cards:
+ + Past In Flames is usable from hand
+Casting Past In Flames from hand
+Gave Betrayal of Flesh flashback
+Gave Infernal Tutor flashback
+Gave Snap flashback
+Gave Demonic Collusion flashback
+Gave Brainspoil flashback
+Gave Coercion flashback
+Gave Brainspoil flashback
+Gave Demonic Collusion flashback
+Life: Player: 1 Opponent: 59	Lands: 14/19	Cast spells: 5
+
+ +++ STEP 9 +++ 
+Usable cards:
+ + Demonic Collusion is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Betrayal of Flesh is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Snap is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Snap from graveyard
+Returned Great Whale to hand
+Life: Player: 1 Opponent: 59	Lands: 15/19	Cast spells: 6
+
+ +++ STEP 10 +++ 
+Usable cards:
+ + Demonic Collusion is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Demonic Collusion from graveyard
+Tutored for Tendrils of Agony
+Life: Player: 1 Opponent: 59	Lands: 11/19	Cast spells: 7
+
+ +++ STEP 11 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Tendrils of Agony is usable from hand
+ + Brainspoil is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Tendrils of Agony from hand
+Hit with 8 tendrils
+Life: Player: 17 Opponent: 43	Lands: 8/19	Cast spells: 8
+
+ +++ STEP 12 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Brainspoil is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Past In Flames from graveyard
+Gave Betrayal of Flesh flashback
+Gave Infernal Tutor flashback
+Gave Brainspoil flashback
+Gave Coercion flashback
+Gave Brainspoil flashback
+Gave Demonic Collusion flashback
+Gave Tendrils of Agony flashback
+Life: Player: 17 Opponent: 43	Lands: 4/19	Cast spells: 9
+
+ +++ STEP 13 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+ + Brainspoil is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Tendrils of Agony is usable from graveyard
+Casting Tendrils of Agony from graveyard
+Hit with 10 tendrils
+Life: Player: 37 Opponent: 23	Lands: 1/19	Cast spells: 10
+
+ +++ STEP 14 +++ 
+Usable cards:
+ + Sneak Attack is usable from battlefield
+Casting Sneak Attack from battlefield
+Put Great Whale on the battlefield
+Life: Player: 37 Opponent: 23	Lands: 7/19	Cast spells: 10
+
+ +++ STEP 15 +++ 
+Usable cards:
+ + Brainspoil is usable from graveyard
+ + Betrayal of Flesh is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+Casting Brainspoil from graveyard
+Transmuted for nothing
+Life: Player: 37 Opponent: 23	Lands: 4/19	Cast spells: 10
+
+ +++ STEP 16 +++ 
+Usable cards:
+ + Brainspoil is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+Casting Demonic Collusion from graveyard
+Tutored for Hoodwink
+Life: Player: 37 Opponent: 23	Lands: 0/19	Cast spells: 11
+
+ +++ STEP 17 +++ 
+Usable cards:
+Out of usable cards
+--------------------------------------------------------------------------------
+
+
+ +++ STEP 1 +++ 
+Usable cards:
+ + Infernal Tutor is usable from hand
+ + Brainspoil is usable from hand
+ + Demonic Collusion is usable from hand
 Casting Demonic Collusion from hand
 Buybacked: discarding Brainspoil and Coercion
-Tutored for Great Whale
+Tutored for Snap
 Life: Player: 1 Opponent: 59	Lands: 15/19	Cast spells: 1
 
  +++ STEP 2 +++ 
 Usable cards:
  + Demonic Collusion is usable from hand
 Casting Demonic Collusion from hand
-Buybacked: discarding Infernal Tutor and Betrayal of Flesh
-Tutored for Past In Flames
+Buybacked: discarding Snap and Betrayal of Flesh
+Tutored for Great Whale
 Life: Player: 1 Opponent: 59	Lands: 11/19	Cast spells: 2
 
  +++ STEP 3 +++ 
 Usable cards:
  + Sneak Attack is usable from battlefield
  + Demonic Collusion is usable from hand
- + Past In Flames is usable from hand
 Casting Sneak Attack from battlefield
 Put Great Whale on the battlefield
 Life: Player: 1 Opponent: 59	Lands: 17/19	Cast spells: 2
@@ -29,490 +371,103 @@ Life: Player: 1 Opponent: 59	Lands: 17/19	Cast spells: 2
  +++ STEP 4 +++ 
 Usable cards:
  + Demonic Collusion is usable from hand
- + Past In Flames is usable from hand
 Casting Demonic Collusion from hand
-Tutored for Snap
+Tutored for Tendrils of Agony
 Life: Player: 1 Opponent: 59	Lands: 13/19	Cast spells: 3
 
  +++ STEP 5 +++ 
 Usable cards:
- + Past In Flames is usable from hand
- + Snap is usable from hand
-Casting Snap from hand
-Returned Great Whale to hand
-Life: Player: 1 Opponent: 59	Lands: 14/19	Cast spells: 4
+ + Tendrils of Agony is usable from hand
+Casting Tendrils of Agony from hand
+Hit with 4 tendrils
+Life: Player: 9 Opponent: 51	Lands: 10/19	Cast spells: 4
 
  +++ STEP 6 +++ 
 Usable cards:
+ + Infernal Tutor is usable from hand
+Casting Infernal Tutor from hand
+Tutored for Past In Flames
+Life: Player: 9 Opponent: 51	Lands: 9/19	Cast spells: 5
+
+ +++ STEP 7 +++ 
+Usable cards:
  + Past In Flames is usable from hand
 Casting Past In Flames from hand
-Gave Infernal Tutor flashback
-Gave Betrayal of Flesh flashback
 Gave Snap flashback
+Gave Betrayal of Flesh flashback
+Gave Infernal Tutor flashback
 Gave Demonic Collusion flashback
 Gave Brainspoil flashback
 Gave Coercion flashback
 Gave Demonic Collusion flashback
-Life: Player: 1 Opponent: 59	Lands: 11/19	Cast spells: 5
-
- +++ STEP 7 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Demonic Collusion is usable from graveyard
- + Brainspoil is usable from graveyard
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Brainspoil from graveyard
-Transmuted for Brainspoil
-Life: Player: 1 Opponent: 59	Lands: 8/19	Cast spells: 5
+Gave Tendrils of Agony flashback
+Life: Player: 9 Opponent: 51	Lands: 6/19	Cast spells: 6
 
  +++ STEP 8 +++ 
 Usable cards:
- + Sneak Attack is usable from battlefield
- + Brainspoil is usable from hand
  + Demonic Collusion is usable from graveyard
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Demonic Collusion from graveyard
-Tutored for Tendrils of Agony
-Life: Player: 1 Opponent: 59	Lands: 4/19	Cast spells: 6
-
- +++ STEP 9 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Brainspoil is usable from hand
- + Tendrils of Agony is usable from hand
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Tendrils of Agony from hand
-Hit with 7 tendrils
-Life: Player: 15 Opponent: 45	Lands: 1/19	Cast spells: 7
-
- +++ STEP 10 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
-Casting Sneak Attack from battlefield
-Put Great Whale on the battlefield
-Life: Player: 15 Opponent: 45	Lands: 7/19	Cast spells: 7
-
- +++ STEP 11 +++ 
-Usable cards:
- + Brainspoil is usable from hand
- + Demonic Collusion is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
+ + Brainspoil is usable from graveyard
  + Snap is usable from graveyard
+ + Betrayal of Flesh is usable from graveyard
+ + Demonic Collusion is usable from graveyard
+ + Tendrils of Agony is usable from graveyard
  + Past In Flames is usable from graveyard
 Casting Demonic Collusion from graveyard
 Tutored for Hoodwink
-Life: Player: 15 Opponent: 45	Lands: 3/19	Cast spells: 8
-
- +++ STEP 12 +++ 
-Usable cards:
- + Brainspoil is usable from hand
- + Hoodwink is usable from hand
- + Snap is usable from graveyard
-Casting Snap from graveyard
-Returned Great Whale to hand
-Life: Player: 15 Opponent: 45	Lands: 4/19	Cast spells: 9
-
- +++ STEP 13 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Brainspoil is usable from hand
- + Hoodwink is usable from hand
- + Past In Flames is usable from graveyard
-Casting Brainspoil from hand
-Transmuted for nothing
-Life: Player: 15 Opponent: 45	Lands: 1/19	Cast spells: 9
-
- +++ STEP 14 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Hoodwink is usable from hand
-Casting Hoodwink from hand
-Bounced land
-Life: Player: 15 Opponent: 45	Lands: 0/18	Cast spells: 10
-
- +++ STEP 15 +++ 
-Usable cards:
- + BASIC_LAND is usable from hand
-Casting BASIC_LAND from hand
-Put land on battlefield
-Life: Player: 15 Opponent: 45	Lands: 1/19	Cast spells: 10
-
- +++ STEP 16 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
-Casting Sneak Attack from battlefield
-Put Great Whale on the battlefield
-Life: Player: 15 Opponent: 45	Lands: 7/19	Cast spells: 10
-
- +++ STEP 17 +++ 
-Usable cards:
- + Betrayal of Flesh is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Past In Flames from graveyard
-Gave Infernal Tutor flashback
-Gave Betrayal of Flesh flashback
-Gave Hoodwink flashback
-Gave Coercion flashback
-Gave Tendrils of Agony flashback
-Gave Brainspoil flashback
-Life: Player: 15 Opponent: 45	Lands: 3/19	Cast spells: 11
-
- +++ STEP 18 +++ 
-Usable cards:
- + Tendrils of Agony is usable from graveyard
- + Brainspoil is usable from graveyard
- + Hoodwink is usable from graveyard
-Casting Tendrils of Agony from graveyard
-Hit with 12 tendrils
-Life: Player: 39 Opponent: 21	Lands: 0/19	Cast spells: 12
-
- +++ STEP 19 +++ 
-Usable cards:
-Out of usable cards
---------------------------------------------------------------------------------
-
-
- +++ STEP 1 +++ 
-Usable cards:
- + Infernal Tutor is usable from hand
- + Brainspoil is usable from hand
- + Demonic Collusion is usable from hand
-Casting Demonic Collusion from hand
-Buybacked: discarding Coercion and Brainspoil
-Tutored for Past In Flames
-Life: Player: 1 Opponent: 59	Lands: 15/19	Cast spells: 1
-
- +++ STEP 2 +++ 
-Usable cards:
- + Demonic Collusion is usable from hand
- + Past In Flames is usable from hand
-Casting Demonic Collusion from hand
-Tutored for Snap
-Life: Player: 1 Opponent: 59	Lands: 11/19	Cast spells: 2
-
- +++ STEP 3 +++ 
-Usable cards:
- + Past In Flames is usable from hand
-Casting Past In Flames from hand
-Gave Demonic Collusion flashback
-Gave Coercion flashback
-Gave Brainspoil flashback
-Gave Demonic Collusion flashback
-Life: Player: 1 Opponent: 59	Lands: 8/19	Cast spells: 3
-
- +++ STEP 4 +++ 
-Usable cards:
- + Demonic Collusion is usable from graveyard
- + Brainspoil is usable from graveyard
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Brainspoil from graveyard
-Transmuted for Brainspoil
-Life: Player: 1 Opponent: 59	Lands: 5/19	Cast spells: 3
-
- +++ STEP 5 +++ 
-Usable cards:
- + Brainspoil is usable from hand
- + Demonic Collusion is usable from graveyard
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Demonic Collusion from graveyard
-Buybacked: discarding Brainspoil and Betrayal of Flesh
-Tutored for Great Whale
-Life: Player: 1 Opponent: 59	Lands: 1/19	Cast spells: 4
-
- +++ STEP 6 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
-Casting Sneak Attack from battlefield
-Put Great Whale on the battlefield
-Life: Player: 1 Opponent: 59	Lands: 7/19	Cast spells: 4
-
- +++ STEP 7 +++ 
-Usable cards:
- + Snap is usable from hand
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Snap from hand
-Returned Great Whale to hand
-Life: Player: 1 Opponent: 59	Lands: 8/19	Cast spells: 5
-
- +++ STEP 8 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Sneak Attack from battlefield
-Put Great Whale on the battlefield
-Life: Player: 1 Opponent: 59	Lands: 14/19	Cast spells: 5
+Life: Player: 9 Opponent: 51	Lands: 2/19	Cast spells: 7
 
  +++ STEP 9 +++ 
 Usable cards:
- + Infernal Tutor is usable from hand
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Infernal Tutor from hand
-Tutored for Tendrils of Agony
-Life: Player: 1 Opponent: 59	Lands: 13/19	Cast spells: 6
+ + Hoodwink is usable from hand
+ + Snap is usable from graveyard
+Casting Hoodwink from hand
+Bounced land
+Life: Player: 9 Opponent: 51	Lands: 1/18	Cast spells: 8
 
  +++ STEP 10 +++ 
-Usable cards:
- + Tendrils of Agony is usable from hand
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Demonic Collusion from graveyard
-Tutored for Hoodwink
-Life: Player: 1 Opponent: 59	Lands: 9/19	Cast spells: 7
-
- +++ STEP 11 +++ 
-Usable cards:
- + Tendrils of Agony is usable from hand
- + Hoodwink is usable from hand
- + Past In Flames is usable from graveyard
-Casting Tendrils of Agony from hand
-Hit with 8 tendrils
-Life: Player: 17 Opponent: 43	Lands: 6/19	Cast spells: 8
-
- +++ STEP 12 +++ 
-Usable cards:
- + Hoodwink is usable from hand
- + Past In Flames is usable from graveyard
-Casting Hoodwink from hand
-Bounced leyline
-Life: Player: 17 Opponent: 43	Lands: 5/19	Cast spells: 9
-
- +++ STEP 13 +++ 
-Usable cards:
- + Coercion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Past In Flames from graveyard
-Gave Betrayal of Flesh flashback
-Gave Snap flashback
-Gave Infernal Tutor flashback
-Gave Hoodwink flashback
-Gave Coercion flashback
-Gave Brainspoil flashback
-Gave Tendrils of Agony flashback
-Life: Player: 17 Opponent: 43	Lands: 1/19	Cast spells: 10
-
- +++ STEP 14 +++ 
-Usable cards:
- + Snap is usable from graveyard
- + Hoodwink is usable from graveyard
-Casting Snap from graveyard
-Returned Great Whale to hand
-Life: Player: 17 Opponent: 43	Lands: 2/19	Cast spells: 11
-
- +++ STEP 15 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Coercion is usable from graveyard
- + Hoodwink is usable from graveyard
-Casting Sneak Attack from battlefield
-Put Great Whale on the battlefield
-Life: Player: 17 Opponent: 43	Lands: 8/19	Cast spells: 11
-
- +++ STEP 16 +++ 
-Usable cards:
- + Coercion is usable from graveyard
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Tendrils of Agony is usable from graveyard
- + Hoodwink is usable from graveyard
-Casting Coercion from graveyard
-Discarded Leyline of Sanctity
-Life: Player: 17 Opponent: 43	Lands: 6/19	Cast spells: 12
-
- +++ STEP 17 +++ 
-Usable cards:
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Tendrils of Agony is usable from graveyard
- + Hoodwink is usable from graveyard
-Casting Hoodwink from graveyard
-Bounced land
-Life: Player: 17 Opponent: 43	Lands: 5/18	Cast spells: 13
-
- +++ STEP 18 +++ 
 Usable cards:
  + BASIC_LAND is usable from hand
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Tendrils of Agony is usable from graveyard
+ + Snap is usable from graveyard
 Casting BASIC_LAND from hand
 Put land on battlefield
-Life: Player: 17 Opponent: 43	Lands: 6/19	Cast spells: 13
-
- +++ STEP 19 +++ 
-Usable cards:
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Tendrils of Agony is usable from graveyard
-Casting Tendrils of Agony from graveyard
-Hit with 14 tendrils
-Life: Player: 45 Opponent: 15	Lands: 3/19	Cast spells: 14
-
- +++ STEP 20 +++ 
-Usable cards:
- + Brainspoil is usable from graveyard
-Casting Brainspoil from graveyard
-Transmuted for nothing
-Life: Player: 45 Opponent: 15	Lands: 0/19	Cast spells: 14
-
- +++ STEP 21 +++ 
-Usable cards:
-Out of usable cards
---------------------------------------------------------------------------------
-
-
- +++ STEP 1 +++ 
-Usable cards:
- + Infernal Tutor is usable from hand
- + Brainspoil is usable from hand
- + Demonic Collusion is usable from hand
-Casting Infernal Tutor from hand
-Discarding Brainspoil to Infernal tutor
-Tutored for Brainspoil
-Life: Player: 1 Opponent: 59	Lands: 18/19	Cast spells: 1
-
- +++ STEP 2 +++ 
-Usable cards:
- + Demonic Collusion is usable from hand
- + Brainspoil is usable from hand
-Casting Demonic Collusion from hand
-Buybacked: discarding Betrayal of Flesh and Coercion
-Tutored for Past In Flames
-Life: Player: 1 Opponent: 59	Lands: 14/19	Cast spells: 2
-
- +++ STEP 3 +++ 
-Usable cards:
- + Brainspoil is usable from hand
- + Demonic Collusion is usable from hand
- + Past In Flames is usable from hand
-Casting Brainspoil from hand
-Transmuted for nothing
-Life: Player: 1 Opponent: 59	Lands: 11/19	Cast spells: 2
-
- +++ STEP 4 +++ 
-Usable cards:
- + Demonic Collusion is usable from hand
- + Past In Flames is usable from hand
-Casting Demonic Collusion from hand
-Tutored for Great Whale
-Life: Player: 1 Opponent: 59	Lands: 7/19	Cast spells: 3
-
- +++ STEP 5 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Past In Flames is usable from hand
-Casting Sneak Attack from battlefield
-Put Great Whale on the battlefield
-Life: Player: 1 Opponent: 59	Lands: 13/19	Cast spells: 3
-
- +++ STEP 6 +++ 
-Usable cards:
- + Past In Flames is usable from hand
-Casting Past In Flames from hand
-Gave Infernal Tutor flashback
-Gave Betrayal of Flesh flashback
-Gave Demonic Collusion flashback
-Gave Brainspoil flashback
-Gave Coercion flashback
-Gave Brainspoil flashback
-Gave Demonic Collusion flashback
-Life: Player: 1 Opponent: 59	Lands: 10/19	Cast spells: 4
-
- +++ STEP 7 +++ 
-Usable cards:
- + Demonic Collusion is usable from graveyard
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Brainspoil is usable from graveyard
- + Demonic Collusion is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Demonic Collusion from graveyard
-Tutored for Snap
-Life: Player: 1 Opponent: 59	Lands: 6/19	Cast spells: 5
-
- +++ STEP 8 +++ 
-Usable cards:
- + Snap is usable from hand
- + Demonic Collusion is usable from graveyard
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Brainspoil is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Snap from hand
-Returned Great Whale to hand
-Life: Player: 1 Opponent: 59	Lands: 7/19	Cast spells: 6
-
- +++ STEP 9 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Demonic Collusion is usable from graveyard
- + Brainspoil is usable from graveyard
- + Brainspoil is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Demonic Collusion from graveyard
-Tutored for Tendrils of Agony
-Life: Player: 1 Opponent: 59	Lands: 3/19	Cast spells: 7
-
- +++ STEP 10 +++ 
-Usable cards:
- + Sneak Attack is usable from battlefield
- + Tendrils of Agony is usable from hand
- + Brainspoil is usable from graveyard
- + Brainspoil is usable from graveyard
-Casting Sneak Attack from battlefield
-Put Great Whale on the battlefield
-Life: Player: 1 Opponent: 59	Lands: 9/19	Cast spells: 7
+Life: Player: 9 Opponent: 51	Lands: 2/19	Cast spells: 8
 
  +++ STEP 11 +++ 
-Usable cards:
- + Tendrils of Agony is usable from hand
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Brainspoil is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Tendrils of Agony from hand
-Hit with 8 tendrils
-Life: Player: 17 Opponent: 43	Lands: 6/19	Cast spells: 8
-
- +++ STEP 12 +++ 
-Usable cards:
- + Brainspoil is usable from graveyard
- + Betrayal of Flesh is usable from graveyard
- + Brainspoil is usable from graveyard
- + Past In Flames is usable from graveyard
-Casting Past In Flames from graveyard
-Gave Infernal Tutor flashback
-Gave Betrayal of Flesh flashback
-Gave Snap flashback
-Gave Brainspoil flashback
-Gave Coercion flashback
-Gave Brainspoil flashback
-Gave Tendrils of Agony flashback
-Life: Player: 17 Opponent: 43	Lands: 2/19	Cast spells: 9
-
- +++ STEP 13 +++ 
 Usable cards:
  + Snap is usable from graveyard
 Casting Snap from graveyard
 Returned Great Whale to hand
-Life: Player: 17 Opponent: 43	Lands: 3/19	Cast spells: 10
+Life: Player: 9 Opponent: 51	Lands: 3/19	Cast spells: 9
 
- +++ STEP 14 +++ 
+ +++ STEP 12 +++ 
 Usable cards:
  + Sneak Attack is usable from battlefield
  + Brainspoil is usable from graveyard
+ + Tendrils of Agony is usable from graveyard
+Casting Sneak Attack from battlefield
+Put Great Whale on the battlefield
+Life: Player: 9 Opponent: 51	Lands: 9/19	Cast spells: 9
+
+ +++ STEP 13 +++ 
+Usable cards:
+ + Demonic Collusion is usable from graveyard
+ + Brainspoil is usable from graveyard
+ + Betrayal of Flesh is usable from graveyard
+ + Tendrils of Agony is usable from graveyard
+ + Past In Flames is usable from graveyard
+Casting Betrayal of Flesh from graveyard
+Killing Great Whale with Betrayal of Flesh
+Life: Player: 9 Opponent: 51	Lands: 4/19	Cast spells: 10
+
+ +++ STEP 14 +++ 
+Usable cards:
+ + Demonic Collusion is usable from graveyard
  + Brainspoil is usable from graveyard
  + Tendrils of Agony is usable from graveyard
+ + Past In Flames is usable from graveyard
 Casting Tendrils of Agony from graveyard
 Hit with 11 tendrils
-Life: Player: 39 Opponent: 21	Lands: 0/19	Cast spells: 11
+Life: Player: 31 Opponent: 29	Lands: 1/19	Cast spells: 11
 
  +++ STEP 15 +++ 
 Usable cards:
