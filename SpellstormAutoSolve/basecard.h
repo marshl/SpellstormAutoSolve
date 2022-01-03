@@ -111,6 +111,9 @@ public:
 	bool CanCast();
 	void Cast();
 
+	bool CanKill();
+	bool CanTransmute();
+
 	void Kill();
 	void Transmute();
 };

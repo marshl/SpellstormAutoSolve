@@ -49,6 +49,8 @@ public:
 	int untappedLand;
 	int spellsCast;
 
+	bool attacked;
+
 	void TapLand( int _number );
 	void UntapLand( int _number );
 };
