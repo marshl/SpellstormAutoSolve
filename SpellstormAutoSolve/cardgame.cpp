@@ -5,8 +5,6 @@
 
 #include "basecard.h"
 
-Game* Game::instance = nullptr;
-
 Zone::Zone(ZONE_TYPE _type)
 {
 	this->type = _type;
@@ -86,7 +84,7 @@ std::vector<BaseCard*> Zone::GetAllCards()
 
 void Zone::AddCard(BaseCard* _card)
 {
-	assert(_card->zone == ZONETYPE_UNDEF);
+	assert(_card->zone == ZONE_TYPE::ZONETYPE_UNDEF);
 	assert(std::find(this->list.begin(), this->list.end(), _card) == this->list.end());
 	this->list.push_back(_card);
 	_card->zone = this->type;
@@ -107,11 +105,11 @@ std::vector<BaseCard*> Zone::GetCardsOfType(CARD_TYPE _cardType)
 
 Player::Player()
 {
-	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(BATTLEFIELD, this->battlefield = new Zone(BATTLEFIELD)));
-	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(HAND, this->hand = new Zone(HAND)));
-	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(GRAVEYARD, this->graveyard = new Zone(GRAVEYARD)));
-	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(LIBRARY, this->library = new Zone(LIBRARY)));
-	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(EXILE, this->exile = new Zone(EXILE)));
+	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(ZONE_TYPE::BATTLEFIELD, this->battlefield = new Zone(ZONE_TYPE::BATTLEFIELD)));
+	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(ZONE_TYPE::HAND, this->hand = new Zone(ZONE_TYPE::HAND)));
+	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(ZONE_TYPE::GRAVEYARD, this->graveyard = new Zone(ZONE_TYPE::GRAVEYARD)));
+	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(ZONE_TYPE::LIBRARY, this->library = new Zone(ZONE_TYPE::LIBRARY)));
+	this->zones.insert(std::pair<ZONE_TYPE, Zone*>(ZONE_TYPE::EXILE, this->exile = new Zone(ZONE_TYPE::EXILE)));
 	
 	this->attacked = false;
 	this->spellsCast = 0;
@@ -151,9 +149,9 @@ Game::~Game()
 
 void Game::MoveCardToZone(int _playerID, ZONE_TYPE _to, BaseCard* _card)
 {
-	assert(_card->zone != ZONETYPE_UNDEF);
+	assert(_card->zone != ZONE_TYPE::ZONETYPE_UNDEF);
 	//assert( _from != _to );
-	assert(_to != ZONETYPE_UNDEF);
+	assert(_to != ZONE_TYPE::ZONETYPE_UNDEF);
 	assert(_card != nullptr);
 	assert(_playerID == 1 || _playerID == 2);
 	Player* player = _playerID == 1 ? this->p1 : this->p2;

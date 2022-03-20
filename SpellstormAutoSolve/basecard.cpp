@@ -5,20 +5,21 @@
 
 #include "cardgame.h"
 
-BaseCard::BaseCard()
+BaseCard::BaseCard(Game* game)
 {
+	this->game = game;
 	this->haste = false;
 	this->hasFlashback = false;
 	this->isToken = false;
-	this->zone = ZONETYPE_UNDEF;
+	this->zone = ZONE_TYPE::ZONETYPE_UNDEF;
 }
 
 bool  BetrayalOfFlesh::CanCast()
 {
 	return false;
-	/*return Game::instance->p1->untappedLand >= 5 &&
-		(Game::instance->p1->graveyard->ContainsOfCardType(CREATURE) > 0
-			|| Game::instance->p1->battlefield->ContainsOfCardType(CREATURE) > 0)
+	/*return this->game->p1->untappedLand >= 5 &&
+		(this->game->p1->graveyard->ContainsOfCardType(CREATURE) > 0
+			|| this->game->p1->battlefield->ContainsOfCardType(CREATURE) > 0)
 		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);*/
 }
 
@@ -26,14 +27,14 @@ void BetrayalOfFlesh::Cast()
 {
 	assert(this->CanCast());
 
-	bool canRevive = Game::instance->p1->graveyard->ContainsOfCardType(CREATURE) > 0;
-	bool canKill = Game::instance->p1->battlefield->ContainsOfCardType(CREATURE) > 0;
+	const bool canRevive = this->game->p1->graveyard->ContainsOfCardType(CARD_TYPE::CREATURE) > 0;
+	const bool canKill = this->game->p1->battlefield->ContainsOfCardType(CARD_TYPE::CREATURE) > 0;
 
-	assert(Game::instance->p1->untappedLand >= 5);
+	assert(this->game->p1->untappedLand >= 5);
 	assert(canKill || canRevive);
 
-	Game::instance->p1->TapLand(5);
-	Game::instance->p1->spellsCast++;
+	this->game->p1->TapLand(5);
+	this->game->p1->spellsCast++;
 
 	if (!canRevive && canKill)
 	{
@@ -58,83 +59,83 @@ void BetrayalOfFlesh::Cast()
 		{
 			this->Kill();
 			this->Revive();
-			Game::instance->p1->totalLand -= 3;
+			this->game->p1->totalLand -= 3;
 		}
 	}
 
-	Game::instance->MoveCardToZone(1, this->zone == HAND ? GRAVEYARD : EXILE, this);
+	this->game->MoveCardToZone(1, this->zone == ZONE_TYPE::HAND ? ZONE_TYPE::GRAVEYARD : ZONE_TYPE::EXILE, this);
 }
 
 void BetrayalOfFlesh::Kill()
 {
-	std::vector<BaseCard*> targets = Game::instance->p1->battlefield->GetCardsOfType(CREATURE);
+	std::vector<BaseCard*> targets = this->game->p1->battlefield->GetCardsOfType(CARD_TYPE::CREATURE);
 	assert(!targets.empty());
 	int randIndex = rand() % targets.size();
 	BaseCard* card = targets[randIndex];
-	Game::instance->MoveCardToZone(1, GRAVEYARD, card);
-	Game::outstr << "Killing " << card->GetLabel() << " with Betrayal of Flesh\n";
+	this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, card);
+	this->game->outstr << "Killing " << card->GetLabel() << " with Betrayal of Flesh\n";
 }
 
 void BetrayalOfFlesh::Revive()
 {
-	std::vector<BaseCard*> targets = Game::instance->p1->graveyard->GetCardsOfType(CREATURE);
+	std::vector<BaseCard*> targets = this->game->p1->graveyard->GetCardsOfType(CARD_TYPE::CREATURE);
 	assert(!targets.empty());
 	int randIndex = rand() % targets.size();
 	BaseCard* card = targets[randIndex];
-	Game::instance->MoveCardToZone(1, BATTLEFIELD, card);
-	Game::outstr << "Reviving " << card->GetLabel() << " with Betrayal of Flesh\n";
+	this->game->MoveCardToZone(1, ZONE_TYPE::BATTLEFIELD, card);
+	this->game->outstr << "Reviving " << card->GetLabel() << " with Betrayal of Flesh\n";
 }
 
 bool InfernalTutor::CanCast()
 {
 	bool canDiscard = false;
-	for each (BaseCard * card in Game::instance->p1->hand->list)
+	for each (BaseCard * card in this->game->p1->hand->list)
 	{
-		if (Game::instance->p1->library->ContainsOfCardName(card->GetName()) >= 1)
+		if (this->game->p1->library->ContainsOfCardName(card->GetName()) >= 1)
 		{
 			canDiscard = true;
 			break;
 		}
 	}
 
-	return Game::instance->p1->untappedLand >= 1
-		&& (this->zone == HAND && (Game::instance->p1->hand->list.size() == 1 || canDiscard)
-			|| (this->zone == GRAVEYARD && this->hasFlashback && (Game::instance->p1->hand->list.size() == 0 || canDiscard)));
+	return this->game->p1->untappedLand >= 1
+		&& (this->zone == ZONE_TYPE::HAND && (this->game->p1->hand->list.size() == 1 || canDiscard)
+			|| (this->zone == ZONE_TYPE::GRAVEYARD && this->hasFlashback && (this->game->p1->hand->list.size() == 0 || canDiscard)));
 }
 
 void InfernalTutor::Cast()
 {
 	assert(this->CanCast());
-	Game::instance->p1->TapLand(1);
-	Game::instance->p1->spellsCast++;
+	this->game->p1->TapLand(1);
+	this->game->p1->spellsCast++;
 
-	Game::instance->MoveCardToZone(1, this->zone == HAND ? GRAVEYARD : EXILE, this);
+	this->game->MoveCardToZone(1, this->zone == ZONE_TYPE::HAND ? ZONE_TYPE::GRAVEYARD : ZONE_TYPE::EXILE, this);
 
 	// Hellbent mode
-	if (Game::instance->p1->hand->list.size() == 0)
+	if (this->game->p1->hand->list.size() == 0)
 	{
-		std::vector<BaseCard*> targets = Game::instance->p1->library->GetAllCards();
+		std::vector<BaseCard*> targets = this->game->p1->library->GetAllCards();
 		if (!targets.empty()) {
 			int randIndex = rand() % targets.size();
 			BaseCard* target = targets[randIndex];
-			Game::instance->MoveCardToZone(1, HAND, target);
-			Game::outstr << "Tutored for " << target->GetLabel() << "\n";
+			this->game->MoveCardToZone(1, ZONE_TYPE::HAND, target);
+			this->game->outstr << "Tutored for " << target->GetLabel() << "\n";
 		}
 		else {
-			Game::outstr << "Nothing to tutor for" << "\n";
+			this->game->outstr << "Nothing to tutor for" << "\n";
 		}
 
 	}
 	else // Normal mode
 	{
-		std::vector<BaseCard*> hand = Game::instance->p1->hand->GetAllCards();
+		std::vector<BaseCard*> hand = this->game->p1->hand->GetAllCards();
 		std::vector<BaseCard*> discardables;
 		assert(hand.empty() == false);
 		BaseCard* discard = nullptr;
 
 		for (unsigned int i = 0; i < hand.size(); ++i)
 		{
-			if (Game::instance->p1->library->ContainsOfCardName(hand[i]->GetName()) >= 1)
+			if (this->game->p1->library->ContainsOfCardName(hand[i]->GetName()) >= 1)
 			{
 				discardables.push_back(hand[i]);
 			}
@@ -145,32 +146,32 @@ void InfernalTutor::Cast()
 		int randIndex = rand() % discardables.size();
 		discard = discardables[randIndex];
 
-		Game::outstr << "Discarding " << discard->GetLabel() << " to Infernal tutor\n";
-		std::vector<BaseCard*> targets = Game::instance->p1->library->GetCardsWithName(discard->GetName());
+		this->game->outstr << "Discarding " << discard->GetLabel() << " to Infernal tutor\n";
+		std::vector<BaseCard*> targets = this->game->p1->library->GetCardsWithName(discard->GetName());
 		if (targets.size() > 0)
 		{
 			int randIndex = rand() % targets.size();
 			BaseCard* target = targets[randIndex];
-			Game::instance->MoveCardToZone(1, HAND, target);
-			Game::outstr << "Tutored for " << target->GetLabel() << "\n";
+			this->game->MoveCardToZone(1, ZONE_TYPE::HAND, target);
+			this->game->outstr << "Tutored for " << target->GetLabel() << "\n";
 		}
 		else
 		{
-			Game::outstr << "Found nothing\n";
+			this->game->outstr << "Found nothing\n";
 		}
 
-		Game::instance->MoveCardToZone(1, GRAVEYARD, discard);
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, discard);
 
 	}
 
-	//Game::instance->MoveCardToZone( 1, this->zone == HAND ? GRAVEYARD : EXILE, this );
+	//this->game->MoveCardToZone( 1, this->zone == HAND ? GRAVEYARD : EXILE, this );
 }
 
 bool Coercion::CanCast()
 {
 	return false;
-	/*return Game::instance->p1->untappedLand >= 2
-		&& Game::instance->p2->battlefield->ContainsOfCardName(LEYLINE_OF_SANCTITY) == 0
+	/*return this->game->p1->untappedLand >= 2
+		&& this->game->p2->battlefield->ContainsOfCardName(LEYLINE_OF_SANCTITY) == 0
 		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);*/
 }
 
@@ -178,23 +179,23 @@ void Coercion::Cast()
 {
 	assert(this->CanCast());
 
-	Game::instance->p1->TapLand(2);
-	Game::instance->p1->spellsCast++;
+	this->game->p1->TapLand(2);
+	this->game->p1->spellsCast++;
 
-	std::vector<BaseCard*> targets = Game::instance->p2->hand->GetAllCards();
+	std::vector<BaseCard*> targets = this->game->p2->hand->GetAllCards();
 
 	if (!targets.empty())
 	{
 		int randIndex = rand() % targets.size();
 		BaseCard* target = targets[randIndex];
-		Game::instance->MoveCardToZone(2, GRAVEYARD, target);
-		Game::outstr << "Discarded " << target->GetLabel() << "\n";
+		this->game->MoveCardToZone(2, ZONE_TYPE::GRAVEYARD, target);
+		this->game->outstr << "Discarded " << target->GetLabel() << "\n";
 	}
 	else
 	{
-		Game::outstr << "Discarded nothing\n";
+		this->game->outstr << "Discarded nothing\n";
 	}
-	Game::instance->MoveCardToZone(1, this->zone == HAND ? GRAVEYARD : EXILE, this);
+	this->game->MoveCardToZone(1, this->zone == ZONE_TYPE::HAND ? ZONE_TYPE::GRAVEYARD : ZONE_TYPE::EXILE, this);
 }
 
 bool Brainspoil::CanCast()
@@ -204,14 +205,14 @@ bool Brainspoil::CanCast()
 
 bool Brainspoil::CanKill() {
 	return false;
-	/*return Game::instance->p1->battlefield->ContainsOfCardType(CREATURE) >= 1 &&
-		Game::instance->p1->untappedLand >= 4
+	/*return this->game->p1->battlefield->ContainsOfCardType(CREATURE) >= 1 &&
+		this->game->p1->untappedLand >= 4
 		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);*/
 }
 
 bool Brainspoil::CanTransmute() {
 	return false;
-	/*return Game::instance->p1->untappedLand >= 3
+	/*return this->game->p1->untappedLand >= 3
 		&& this->zone == HAND;*/
 }
 
@@ -245,53 +246,53 @@ void Brainspoil::Cast()
 	{
 		assert(false);
 	}
-	Game::instance->MoveCardToZone(1, this->zone == HAND ? GRAVEYARD : EXILE, this);
+	this->game->MoveCardToZone(1, this->zone == ZONE_TYPE::HAND ? ZONE_TYPE::GRAVEYARD : ZONE_TYPE::EXILE, this);
 }
 
 void Brainspoil::Kill()
 {
-	assert(Game::instance->p1->battlefield->ContainsOfCardType(CREATURE) >= 1);
+	assert(this->game->p1->battlefield->ContainsOfCardType(CARD_TYPE::CREATURE) >= 1);
 
-	Game::instance->p1->TapLand(4);
-	if (this->zone == GRAVEYARD) {
-		Game::instance->MoveCardToZone(1, EXILE, this);
+	this->game->p1->TapLand(4);
+	if (this->zone == ZONE_TYPE::GRAVEYARD) {
+		this->game->MoveCardToZone(1, ZONE_TYPE::EXILE, this);
 	}
 	else {
-		Game::instance->MoveCardToZone(1, GRAVEYARD, this);
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, this);
 	}
 
-	Game::instance->p1->spellsCast++;
+	this->game->p1->spellsCast++;
 
-	std::vector<BaseCard*> targets = Game::instance->p1->battlefield->GetCardsOfType(CREATURE);
+	std::vector<BaseCard*> targets = this->game->p1->battlefield->GetCardsOfType(CARD_TYPE::CREATURE);
 	assert(!targets.empty());
 
 	int randIndex = rand() % targets.size();
 	BaseCard* target = targets[randIndex];
-	Game::instance->MoveCardToZone(1, GRAVEYARD, target);
-	Game::outstr << "Killed " << target->GetLabel() << "\n";
+	this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, target);
+	this->game->outstr << "Killed " << target->GetLabel() << "\n";
 }
 
 void Brainspoil::Transmute()
 {
-	Game::instance->p1->TapLand(3);
-	std::vector<BaseCard*> targets = Game::instance->p1->library->GetCardsWithCost(5);
+	this->game->p1->TapLand(3);
+	std::vector<BaseCard*> targets = this->game->p1->library->GetCardsWithCost(5);
 	if (!targets.empty())
 	{
 		int randIndex = rand() % targets.size();
 		BaseCard* target = targets[randIndex];
-		Game::instance->MoveCardToZone(1, HAND, target);
-		Game::outstr << "Transmuted for " << target->GetLabel() << "\n";
+		this->game->MoveCardToZone(1, ZONE_TYPE::HAND, target);
+		this->game->outstr << "Transmuted for " << target->GetLabel() << "\n";
 	}
 	else
 	{
-		Game::outstr << "Transmuted for nothing\n";
+		this->game->outstr << "Transmuted for nothing\n";
 	}
 }
 
 bool DemonicCollusion::CanCast()
 {
-	return Game::instance->p1->untappedLand >= 4
-		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);
+	return this->game->p1->untappedLand >= 4
+		&& (this->zone == ZONE_TYPE::HAND || this->zone == ZONE_TYPE::GRAVEYARD && this->hasFlashback);
 }
 
 void DemonicCollusion::Cast()
@@ -299,41 +300,41 @@ void DemonicCollusion::Cast()
 	assert(this->CanCast());
 	ZONE_TYPE startingZone = this->zone;
 
-	Game::instance->MoveCardToZone(1, this->zone == HAND ? GRAVEYARD : EXILE, this);
-	Game::instance->p1->spellsCast++;
-	Game::instance->p1->TapLand(4);
-	bool canBuyback = Game::instance->p1->hand->list.size() >= 2 && startingZone == HAND;
+	this->game->MoveCardToZone(1, this->zone == ZONE_TYPE::HAND ? ZONE_TYPE::GRAVEYARD : ZONE_TYPE::EXILE, this);
+	this->game->p1->spellsCast++;
+	this->game->p1->TapLand(4);
+	bool canBuyback = this->game->p1->hand->list.size() >= 2 && startingZone == ZONE_TYPE::HAND;
 
 	if (canBuyback && rand() % 2)
 	{
-		std::vector<BaseCard*> hand = Game::instance->p1->hand->GetAllCards();
+		std::vector<BaseCard*> hand = this->game->p1->hand->GetAllCards();
 
 		BaseCard* discard1 = nullptr;
 		BaseCard* discard2 = nullptr;
 
 		int randIndex = rand() % hand.size();
 		discard1 = hand[randIndex];
-		Game::instance->MoveCardToZone(1, GRAVEYARD, discard1);
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, discard1);
 
-		hand = Game::instance->p1->hand->GetAllCards();
+		hand = this->game->p1->hand->GetAllCards();
 		randIndex = rand() % hand.size();
 		discard2 = hand[randIndex];
-		Game::instance->MoveCardToZone(1, GRAVEYARD, discard2);
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, discard2);
 
-		if (this->zone == GRAVEYARD)
+		if (this->zone == ZONE_TYPE::GRAVEYARD)
 		{
-			Game::instance->MoveCardToZone(1, HAND, this);
+			this->game->MoveCardToZone(1, ZONE_TYPE::HAND, this);
 		}
-		Game::outstr << "Buybacked: discarding " << discard1->GetLabel() << " and " << discard2->GetLabel() << "\n";
+		this->game->outstr << "Buybacked: discarding " << discard1->GetLabel() << " and " << discard2->GetLabel() << "\n";
 	}
 
-	std::vector<BaseCard*> targets = Game::instance->p1->library->GetAllCards();
+	std::vector<BaseCard*> targets = this->game->p1->library->GetAllCards();
 	if (targets.size() > 0)
 	{
 		int randIndex = rand() % targets.size();
 		BaseCard* target = targets[randIndex];
-		Game::instance->MoveCardToZone(1, HAND, target);
-		Game::outstr << "Tutored for " << target->GetLabel() << "\n";
+		this->game->MoveCardToZone(1, ZONE_TYPE::HAND, target);
+		this->game->outstr << "Tutored for " << target->GetLabel() << "\n";
 	}
 }
 
@@ -349,104 +350,104 @@ void LeylineOfSanctity::Cast()
 
 bool SneakAttack::CanCast()
 {
-	return Game::instance->p1->hand->ContainsOfCardType(CREATURE) >= 1
-		&& Game::instance->p1->untappedLand >= 1
-		&& this->zone == BATTLEFIELD;
+	return this->game->p1->hand->ContainsOfCardType(CARD_TYPE::CREATURE) >= 1
+		&& this->game->p1->untappedLand >= 1
+		&& this->zone == ZONE_TYPE::BATTLEFIELD;
 }
 
 void SneakAttack::Cast()
 {
 	assert(this->CanCast());
 
-	Game::instance->p1->TapLand(1);
-	std::vector<BaseCard*> targets = Game::instance->p1->hand->GetCardsOfType(CREATURE);
+	this->game->p1->TapLand(1);
+	std::vector<BaseCard*> targets = this->game->p1->hand->GetCardsOfType(CARD_TYPE::CREATURE);
 
 	int randIndex = rand() % targets.size();
 	BaseCard* target = targets[randIndex];
-	Game::instance->MoveCardToZone(1, BATTLEFIELD, target);
+	this->game->MoveCardToZone(1, ZONE_TYPE::BATTLEFIELD, target);
 	target->haste = true;
 
-	if (target->GetName() == GREAT_WHALE)
+	if (target->GetName() == CARD_NAME::GREAT_WHALE)
 	{
-		Game::instance->p1->UntapLand(7);
+		this->game->p1->UntapLand(7);
 	}
-	Game::outstr << "Put " << target->GetLabel() << " on the battlefield\n";
+	this->game->outstr << "Put " << target->GetLabel() << " on the battlefield\n";
 }
 
 bool SorinsVengeance::CanCast()
 {
-	return Game::instance->p1->untappedLand >= 6
-		&& Game::instance->p2->battlefield->ContainsOfCardName(LEYLINE_OF_SANCTITY) == 0
-		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);
+	return this->game->p1->untappedLand >= 6
+		&& this->game->p2->battlefield->ContainsOfCardName(CARD_NAME::LEYLINE_OF_SANCTITY) == 0
+		&& (this->zone == ZONE_TYPE::HAND || this->zone == ZONE_TYPE::GRAVEYARD && this->hasFlashback);
 }
 
 void SorinsVengeance::Cast()
 {
 	assert(this->CanCast());
 
-	Game::instance->p1->TapLand(6);
-	Game::instance->p1->life += 10;
-	Game::instance->p2->life -= 10;
+	this->game->p1->TapLand(6);
+	this->game->p1->life += 10;
+	this->game->p2->life -= 10;
 
-	Game::instance->MoveCardToZone(1, GRAVEYARD, this);
-	Game::instance->p1->spellsCast++;
+	this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, this);
+	this->game->p1->spellsCast++;
 
-	Game::outstr << "Damage dealt\n";
+	this->game->outstr << "Damage dealt\n";
 }
 
 
 bool Snap::CanCast()
 {
-	return Game::instance->p1->battlefield->ContainsOfCardType(CREATURE)
-		&& Game::instance->p1->untappedLand >= 1
-		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);
+	return this->game->p1->battlefield->ContainsOfCardType(CARD_TYPE::CREATURE)
+		&& this->game->p1->untappedLand >= 1
+		&& (this->zone == ZONE_TYPE::HAND || this->zone == ZONE_TYPE::GRAVEYARD && this->hasFlashback);
 }
 
 void Snap::Cast()
 {
 	assert(this->CanCast());
 
-	Game::instance->p1->TapLand(1);
-	Game::instance->p1->UntapLand(2);
+	this->game->p1->TapLand(1);
+	this->game->p1->UntapLand(2);
 
-	std::vector<BaseCard*> targets = Game::instance->p1->battlefield->GetCardsOfType(CREATURE);
+	std::vector<BaseCard*> targets = this->game->p1->battlefield->GetCardsOfType(CARD_TYPE::CREATURE);
 	assert(targets.size() >= 1);
 	int randIndex = rand() % targets.size();
 	BaseCard* target = targets[randIndex];
 
-	Game::instance->MoveCardToZone(1, HAND, target);
-	Game::instance->MoveCardToZone(1, this->zone == HAND ? GRAVEYARD : EXILE, this);
+	this->game->MoveCardToZone(1, ZONE_TYPE::HAND, target);
+	this->game->MoveCardToZone(1, this->zone == ZONE_TYPE::HAND ? ZONE_TYPE::GRAVEYARD : ZONE_TYPE::EXILE, this);
 
-	Game::instance->p1->spellsCast++;
+	this->game->p1->spellsCast++;
 
-	Game::outstr << "Returned " << target->GetLabel() << " to hand\n";
+	this->game->outstr << "Returned " << target->GetLabel() << " to hand\n";
 }
 
 bool OneWithNothing::CanCast()
 {
-	return Game::instance->p1->untappedLand >= 1
-		&& (this->zone == HAND
-			|| (this->hasFlashback && this->zone == GRAVEYARD));
+	return this->game->p1->untappedLand >= 1
+		&& (this->zone == ZONE_TYPE::HAND
+			|| (this->hasFlashback && this->zone == ZONE_TYPE::GRAVEYARD));
 }
 
 void OneWithNothing::Cast()
 {
 	assert(this->CanCast());
-	Game::instance->p1->TapLand(1);
-	std::vector<BaseCard*> targets = Game::instance->p1->hand->GetAllCards();
+	this->game->p1->TapLand(1);
+	std::vector<BaseCard*> targets = this->game->p1->hand->GetAllCards();
 
 	for (unsigned int i = 0; i < targets.size(); ++i)
 	{
-		Game::instance->MoveCardToZone(1, GRAVEYARD, targets[i]);
-		Game::outstr << "Discarded " << targets[i]->GetLabel() << "\n";
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, targets[i]);
+		this->game->outstr << "Discarded " << targets[i]->GetLabel() << "\n";
 	}
 
-	Game::instance->p1->spellsCast++;
+	this->game->p1->spellsCast++;
 }
 
 bool ChimneyImp::CanCast()
 {
-	return false;//Game::instance->p1->untappedLand >= 4 && 
+	return false;//this->game->p1->untappedLand >= 4 && 
 		//( this->zone == HAND || 
 			//this->haste && this->zone == BATTLEFIELD;
 		//);
@@ -457,112 +458,112 @@ void ChimneyImp::Cast()
 	assert(this->CanCast());
 	/*if ( this->haste && this->zone == BATTLEFIELD )
 	{
-		Game::instance->p2->life -= 1;
+		this->game->p2->life -= 1;
 		this->haste = false;
-		Game::outstr << "Attacked for 1 damage\n";
+		this->game->outstr << "Attacked for 1 damage\n";
 	}*/
 	/*else if ( this->zone == HAND )
 	{
-		Game::instance->MoveCardToZone( 1, BATTLEFIELD, this );
-		Game::outstr << "Put Chimney Imp on the battlefield\n";
-		Game::instance->p1->spellsCast++;
-		Game::instance->p1->TapLand( 4 );
+		this->game->MoveCardToZone( 1, BATTLEFIELD, this );
+		this->game->outstr << "Put Chimney Imp on the battlefield\n";
+		this->game->p1->spellsCast++;
+		this->game->p1->TapLand( 4 );
 	}*/
 
 }
 
 bool PastInFlames::CanCast()
 {
-	return Game::instance->p1->untappedLand >= 3 && this->zone == HAND
-		|| Game::instance->p1->untappedLand >= 4 && this->zone == GRAVEYARD;
+	return this->game->p1->untappedLand >= 3 && this->zone == ZONE_TYPE::HAND
+		|| this->game->p1->untappedLand >= 4 && this->zone == ZONE_TYPE::GRAVEYARD;
 }
 
 void PastInFlames::Cast()
 {
 	assert(this->CanCast());
 
-	if (this->zone == GRAVEYARD)
+	if (this->zone == ZONE_TYPE::GRAVEYARD)
 	{
-		Game::instance->p1->TapLand(4);
-		Game::instance->MoveCardToZone(1, EXILE, this);
+		this->game->p1->TapLand(4);
+		this->game->MoveCardToZone(1, ZONE_TYPE::EXILE, this);
 	}
 
-	std::vector<BaseCard*> instants = Game::instance->p1->graveyard->GetCardsOfType(INSTANT);
-	std::vector<BaseCard*> sorceries = Game::instance->p1->graveyard->GetCardsOfType(SORCERY);
+	std::vector<BaseCard*> instants = this->game->p1->graveyard->GetCardsOfType(CARD_TYPE::INSTANT);
+	std::vector<BaseCard*> sorceries = this->game->p1->graveyard->GetCardsOfType(CARD_TYPE::SORCERY);
 	for (unsigned int i = 0; i < instants.size(); ++i)
 	{
-		Game::outstr << "Gave " << instants[i]->GetLabel() << " flashback\n";
+		this->game->outstr << "Gave " << instants[i]->GetLabel() << " flashback\n";
 		instants[i]->hasFlashback = true;
 	}
 
 	for (unsigned int i = 0; i < sorceries.size(); ++i)
 	{
-		Game::outstr << "Gave " << sorceries[i]->GetLabel() << " flashback\n";
+		this->game->outstr << "Gave " << sorceries[i]->GetLabel() << " flashback\n";
 		sorceries[i]->hasFlashback = true;
 	}
 
-	if (this->zone == HAND)
+	if (this->zone == ZONE_TYPE::HAND)
 	{
-		Game::instance->p1->TapLand(3);
-		Game::instance->MoveCardToZone(1, GRAVEYARD, this);
+		this->game->p1->TapLand(3);
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, this);
 	}
 
-	Game::instance->p1->spellsCast++;
+	this->game->p1->spellsCast++;
 }
 
 bool TendrilsOfAgony::CanCast()
 {
-	if (Game::instance->p2->battlefield->ContainsOfCardName(LEYLINE_OF_SANCTITY)) {
+	if (this->game->p2->battlefield->ContainsOfCardName(CARD_NAME::LEYLINE_OF_SANCTITY)) {
 		return false;
 	}
-	return Game::instance->p1->untappedLand >= 3
-		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);
+	return this->game->p1->untappedLand >= 3
+		&& (this->zone == ZONE_TYPE::HAND || this->zone == ZONE_TYPE::GRAVEYARD && this->hasFlashback);
 }
 
 void TendrilsOfAgony::Cast()
 {
 	assert(this->CanCast());
 
-	Game::instance->p2->life -= (1 + Game::instance->p1->spellsCast) * 2;
-	Game::instance->p1->life += (1 + Game::instance->p1->spellsCast) * 2;
+	this->game->p2->life -= (1 + this->game->p1->spellsCast) * 2;
+	this->game->p1->life += (1 + this->game->p1->spellsCast) * 2;
 
-	if (this->zone == GRAVEYARD)
+	if (this->zone == ZONE_TYPE::GRAVEYARD)
 	{
-		Game::instance->MoveCardToZone(1, EXILE, this);
+		this->game->MoveCardToZone(1, ZONE_TYPE::EXILE, this);
 	}
 	else
 	{
-		Game::instance->MoveCardToZone(1, GRAVEYARD, this);
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, this);
 	}
-	Game::instance->p1->TapLand(3);
-	Game::instance->p1->spellsCast++;
-	Game::outstr << "Hit with " << Game::instance->p1->spellsCast << " tendrils\n";
+	this->game->p1->TapLand(3);
+	this->game->p1->spellsCast++;
+	this->game->outstr << "Hit with " << this->game->p1->spellsCast << " tendrils\n";
 }
 
 bool SpittingImage::CanCast()
 {
-	return Game::instance->p1->battlefield->ContainsOfCardType(CREATURE) >= 1
-		&& Game::instance->p1->untappedLand >= 5
-		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback
-			|| this->zone == GRAVEYARD && Game::instance->p1->hand->ContainsOfCardType(LAND) >= 1);
+	return this->game->p1->battlefield->ContainsOfCardType(CARD_TYPE::CREATURE) >= 1
+		&& this->game->p1->untappedLand >= 5
+		&& (this->zone == ZONE_TYPE::HAND || this->zone == ZONE_TYPE::GRAVEYARD && this->hasFlashback
+			|| this->zone == ZONE_TYPE::GRAVEYARD && this->game->p1->hand->ContainsOfCardType(CARD_TYPE::LAND) >= 1);
 }
 
 void SpittingImage::Cast()
 {
 	assert(this->CanCast());
 
-	if (this->zone == HAND)
+	if (this->zone == ZONE_TYPE::HAND)
 	{
-		Game::instance->MoveCardToZone(1, GRAVEYARD, this);
+		this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, this);
 	}
-	else if (this->zone == GRAVEYARD)
+	else if (this->zone == ZONE_TYPE::GRAVEYARD)
 	{
 		bool canFlashback = this->hasFlashback;
-		bool canRetrace = Game::instance->p1->hand->ContainsOfCardType(LAND) >= 1;
+		bool canRetrace = this->game->p1->hand->ContainsOfCardType(CARD_TYPE::LAND) >= 1;
 
 		if (canFlashback && !canRetrace)
 		{
-			Game::instance->MoveCardToZone(1, EXILE, this);
+			this->game->MoveCardToZone(1, ZONE_TYPE::EXILE, this);
 		}
 		else if (!canFlashback && canRetrace)
 		{
@@ -572,7 +573,7 @@ void SpittingImage::Cast()
 		{
 			if (rand() % 2) // Flashback
 			{
-				Game::instance->MoveCardToZone(1, EXILE, this);
+				this->game->MoveCardToZone(1, ZONE_TYPE::EXILE, this);
 			}
 			else
 			{
@@ -585,25 +586,25 @@ void SpittingImage::Cast()
 		}
 	}
 
-	std::vector<BaseCard*> targets = Game::instance->p1->battlefield->GetCardsOfType(CREATURE);
+	std::vector<BaseCard*> targets = this->game->p1->battlefield->GetCardsOfType(CARD_TYPE::CREATURE);
 	int randIndex = rand() % targets.size();
 	BaseCard* target = targets[randIndex];
 
-	Game::instance->p1->TapLand(5);
-	Game::instance->p1->spellsCast++;
+	this->game->p1->TapLand(5);
+	this->game->p1->spellsCast++;
 
-	if (target->GetName() == GREAT_WHALE)
+	if (target->GetName() == CARD_NAME::GREAT_WHALE)
 	{
-		GreatWhale* newWhale = new GreatWhale();
-		Game::instance->p1->UntapLand(7);
-		Game::instance->p1->battlefield->AddCard(newWhale);
-		Game::outstr << "Created a copy of Great Whale\n";
+		GreatWhale* newWhale = new GreatWhale(this->game);
+		this->game->p1->UntapLand(7);
+		this->game->p1->battlefield->AddCard(newWhale);
+		this->game->outstr << "Created a copy of Great Whale\n";
 	}
-	else if (target->GetName() == CHIMNEY_IMP)
+	else if (target->GetName() == CARD_NAME::CHIMNEY_IMP)
 	{
-		ChimneyImp* newImp = new ChimneyImp();
-		Game::instance->p1->battlefield->AddCard(newImp);
-		Game::outstr << "Created a copy of Chimney Imp\n";
+		ChimneyImp* newImp = new ChimneyImp(this->game);
+		this->game->p1->battlefield->AddCard(newImp);
+		this->game->outstr << "Created a copy of Chimney Imp\n";
 	}
 	else
 	{
@@ -613,39 +614,39 @@ void SpittingImage::Cast()
 
 void SpittingImage::Retrace()
 {
-	std::vector<BaseCard*> discards = Game::instance->p1->hand->GetCardsOfType(LAND);
+	std::vector<BaseCard*> discards = this->game->p1->hand->GetCardsOfType(CARD_TYPE::LAND);
 	assert(discards.size() > 0);
 
 	int randIndex = rand() % discards.size();
 	BaseCard* discard = discards[randIndex];
 
-	Game::instance->MoveCardToZone(1, GRAVEYARD, discard);
-	Game::outstr << "Retraced discarding " << discard->GetLabel() << "\n";
+	this->game->MoveCardToZone(1, ZONE_TYPE::GRAVEYARD, discard);
+	this->game->outstr << "Retraced discarding " << discard->GetLabel() << "\n";
 }
 
 bool GreatWhale::CanCast()
 {
-	return (this->zone == BATTLEFIELD && this->haste && !Game::instance->p1->attacked) ||
-		(this->zone == HAND && Game::instance->p1->untappedLand >= 6);
+	return (this->zone == ZONE_TYPE::BATTLEFIELD && this->haste && !this->game->p1->attacked) ||
+		(this->zone == ZONE_TYPE::HAND && this->game->p1->untappedLand >= 6);
 }
 
 void GreatWhale::Cast()
 {
 	assert(this->CanCast());
 
-	if (this->zone == BATTLEFIELD && this->haste && !Game::instance->p1->attacked)
+	if (this->zone == ZONE_TYPE::BATTLEFIELD && this->haste && !this->game->p1->attacked)
 	{
-		Game::instance->p2->life -= 5;
-		Game::instance->p1->attacked = true;
-		Game::outstr << "Attacked for 5 damage\n";
+		this->game->p2->life -= 5;
+		this->game->p1->attacked = true;
+		this->game->outstr << "Attacked for 5 damage\n";
 	}
-	else if (this->zone == HAND)
+	else if (this->zone == ZONE_TYPE::HAND)
 	{
-		Game::instance->MoveCardToZone(1, BATTLEFIELD, this);
-		Game::instance->p1->TapLand(6);
-		Game::instance->p1->UntapLand(7);
-		Game::instance->p1->spellsCast++;
-		Game::outstr << "Cast Great Whale\n";
+		this->game->MoveCardToZone(1, ZONE_TYPE::BATTLEFIELD, this);
+		this->game->p1->TapLand(6);
+		this->game->p1->UntapLand(7);
+		this->game->p1->spellsCast++;
+		this->game->outstr << "Cast Great Whale\n";
 	}
 	else
 	{
@@ -655,46 +656,46 @@ void GreatWhale::Cast()
 
 bool Hoodwink::CanCast()
 {
-	return Game::instance->p1->untappedLand >= 1
-		&& (this->zone == HAND || this->zone == GRAVEYARD && this->hasFlashback);
+	return this->game->p1->untappedLand >= 1
+		&& (this->zone == ZONE_TYPE::HAND || this->zone == ZONE_TYPE::GRAVEYARD && this->hasFlashback);
 }
 
 void Hoodwink::Cast()
 {
 	assert(this->CanCast());
 
-	bool hasLeyline = Game::instance->p2->battlefield->ContainsOfCardName(LEYLINE_OF_SANCTITY) >= 1;
+	bool hasLeyline = this->game->p2->battlefield->ContainsOfCardName(CARD_NAME::LEYLINE_OF_SANCTITY) >= 1;
 
 	if (hasLeyline && rand() % 2) // Bounce enchantment
 	{
-		BaseCard* leyline = Game::instance->p2->battlefield->GetCardsWithName(LEYLINE_OF_SANCTITY)[0];
-		Game::instance->MoveCardToZone(2, HAND, leyline);
-		Game::outstr << "Bounced leyline\n";
+		BaseCard* leyline = this->game->p2->battlefield->GetCardsWithName(CARD_NAME::LEYLINE_OF_SANCTITY)[0];
+		this->game->MoveCardToZone(2, ZONE_TYPE::HAND, leyline);
+		this->game->outstr << "Bounced leyline\n";
 	}
 	else // Bounce land
 	{
-		std::vector<BaseCard*> targets = Game::instance->p1->battlefield->GetCardsOfType(LAND);
+		std::vector<BaseCard*> targets = this->game->p1->battlefield->GetCardsOfType(CARD_TYPE::LAND);
 		assert(targets.size() > 0);
-		Game::instance->MoveCardToZone(1, HAND, targets[0]);
-		Game::instance->p1->totalLand--;
-		Game::outstr << "Bounced land\n";
+		this->game->MoveCardToZone(1, ZONE_TYPE::HAND, targets[0]);
+		this->game->p1->totalLand--;
+		this->game->outstr << "Bounced land\n";
 	}
-	Game::instance->p1->TapLand(1);
-	Game::instance->p1->spellsCast++;
-	Game::instance->MoveCardToZone(1, this->zone == HAND ? GRAVEYARD : EXILE, this);
+	this->game->p1->TapLand(1);
+	this->game->p1->spellsCast++;
+	this->game->MoveCardToZone(1, this->zone == ZONE_TYPE::HAND ? ZONE_TYPE::GRAVEYARD : ZONE_TYPE::EXILE, this);
 }
 
 bool BasicLand::CanCast()
 {
-	return this->zone == HAND;
+	return this->zone == ZONE_TYPE::HAND;
 }
 
 void BasicLand::Cast()
 {
 	assert(this->CanCast());
-	Game::instance->MoveCardToZone(1, BATTLEFIELD, this);
-	Game::instance->p1->untappedLand++;
-	Game::instance->p1->totalLand++;
+	this->game->MoveCardToZone(1, ZONE_TYPE::BATTLEFIELD, this);
+	this->game->p1->untappedLand++;
+	this->game->p1->totalLand++;
 
-	Game::outstr << "Put land on battlefield\n";
+	this->game->outstr << "Put land on battlefield\n";
 }

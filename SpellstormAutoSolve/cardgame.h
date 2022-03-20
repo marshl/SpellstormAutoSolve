@@ -61,13 +61,12 @@ public:
 	Game();
 	~Game();
 
-	static Game* instance;
 	Player* p1;
 	Player* p2;
 
 	void MoveCardToZone( int _player, ZONE_TYPE _to, BaseCard* _card );
 
-	static std::ostringstream outstr;
+	std::ostringstream outstr;
 };
 
 

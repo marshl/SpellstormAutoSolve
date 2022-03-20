@@ -3,7 +3,9 @@
 
 #include <cstring>
 
-enum CARD_NAME
+class Game;
+
+enum class CARD_NAME
 {
 	CARDNAME_UNDEF,
 	BETRAYAL_OF_FLESH,
@@ -25,7 +27,7 @@ enum CARD_NAME
 	BASIC_LAND,
 };
 
-enum CARD_TYPE
+enum class CARD_TYPE
 {
 	CARDTYPE_UNDEF,
 	CREATURE,
@@ -35,7 +37,7 @@ enum CARD_TYPE
 	LAND,
 };
 
-enum ZONE_TYPE 
+enum class ZONE_TYPE 
 {
 	ZONETYPE_UNDEF,
 	BATTLEFIELD,
@@ -47,8 +49,10 @@ enum ZONE_TYPE
 
 class BaseCard
 {
+protected:
+	Game* game;
 public:
-	BaseCard();
+	BaseCard(Game*);
 
 	virtual int GetCost() = 0;
 	virtual CARD_NAME GetName() = 0;
@@ -66,9 +70,11 @@ public:
 class BetrayalOfFlesh : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 6; }
-	CARD_NAME GetName() { return BETRAYAL_OF_FLESH; }
-	CARD_TYPE GetType() { return INSTANT; }
+	CARD_NAME GetName() { return CARD_NAME::BETRAYAL_OF_FLESH; }
+	CARD_TYPE GetType() { return CARD_TYPE::INSTANT; }
 	char* GetLabel() { return "Betrayal of Flesh"; }
 	bool CanCast();
 
@@ -81,9 +87,11 @@ public:
 class InfernalTutor : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 2; }
-	CARD_NAME GetName() { return INFERNAL_TUTOR; }
-	CARD_TYPE GetType() { return INSTANT; }
+	CARD_NAME GetName() { return CARD_NAME::INFERNAL_TUTOR; }
+	CARD_TYPE GetType() { return CARD_TYPE::INSTANT; }
 	char* GetLabel() { return "Infernal Tutor"; }
 	bool CanCast();
 	void Cast();
@@ -92,9 +100,11 @@ public:
 class Coercion : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 3; }
-	CARD_NAME GetName() { return COERCION; }
-	CARD_TYPE GetType() { return SORCERY; }
+	CARD_NAME GetName() { return CARD_NAME::COERCION; }
+	CARD_TYPE GetType() { return CARD_TYPE::SORCERY; }
 	char* GetLabel() { return "Coercion"; }
 	bool CanCast();
 	void Cast();
@@ -103,9 +113,11 @@ public:
 class Brainspoil : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 5; }
-	CARD_NAME GetName() { return BRAINSPOIL; }
-	CARD_TYPE GetType() { return SORCERY; }
+	CARD_NAME GetName() { return CARD_NAME::BRAINSPOIL; }
+	CARD_TYPE GetType() { return CARD_TYPE::SORCERY; }
 	char* GetLabel() { return "Brainspoil"; }
 
 	bool CanCast();
@@ -121,9 +133,11 @@ public:
 class DemonicCollusion : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 5; }
-	CARD_NAME GetName() { return DEMONIC_COLLUSION; }
-	CARD_TYPE GetType() { return SORCERY; }
+	CARD_NAME GetName() { return CARD_NAME::DEMONIC_COLLUSION; }
+	CARD_TYPE GetType() { return CARD_TYPE::SORCERY; }
 	char* GetLabel() { return "Demonic Collusion"; }
 
 	bool CanCast();
@@ -133,9 +147,11 @@ public:
 class LeylineOfSanctity : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 4; }
-	CARD_NAME GetName() { return LEYLINE_OF_SANCTITY; }
-	CARD_TYPE GetType() { return ENCHANTMENT; }
+	CARD_NAME GetName() { return CARD_NAME::LEYLINE_OF_SANCTITY; }
+	CARD_TYPE GetType() { return CARD_TYPE::ENCHANTMENT; }
 	char* GetLabel() { return "Leyline of Sanctity"; }
 
 	bool CanCast();
@@ -145,9 +161,11 @@ public:
 class SneakAttack : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 4; }
-	CARD_NAME GetName() { return SNEAK_ATTACK; }
-	CARD_TYPE GetType() { return ENCHANTMENT; }
+	CARD_NAME GetName() { return CARD_NAME::SNEAK_ATTACK; }
+	CARD_TYPE GetType() { return CARD_TYPE::ENCHANTMENT; }
 	char* GetLabel() { return "Sneak Attack"; }
 
 	bool CanCast();
@@ -157,9 +175,11 @@ public:
 class SorinsVengeance : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 7; }
-	CARD_NAME GetName() { return SORINS_VENGEANCE; }
-	CARD_TYPE GetType() { return INSTANT; }
+	CARD_NAME GetName() { return CARD_NAME::SORINS_VENGEANCE; }
+	CARD_TYPE GetType() { return CARD_TYPE::INSTANT; }
 	char* GetLabel() { return "Sorin's Vengeance"; }
 
 	bool CanCast();
@@ -170,9 +190,11 @@ public:
 class Snap : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 2; }
-	CARD_NAME GetName() { return SNAP; }
-	CARD_TYPE GetType() { return INSTANT; }
+	CARD_NAME GetName() { return CARD_NAME::SNAP; }
+	CARD_TYPE GetType() { return CARD_TYPE::INSTANT; }
 	char* GetLabel() { return "Snap"; }
 
 	bool CanCast();
@@ -182,9 +204,11 @@ public:
 class OneWithNothing : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 1; }
-	CARD_NAME GetName() { return ONE_WITH_NOTHING; }
-	CARD_TYPE GetType() { return INSTANT; }
+	CARD_NAME GetName() { return CARD_NAME::ONE_WITH_NOTHING; }
+	CARD_TYPE GetType() { return CARD_TYPE::INSTANT; }
 	char* GetLabel() { return "One With Nothing"; }
 
 	bool CanCast();
@@ -193,9 +217,12 @@ public:
 
 class ChimneyImp : public BaseCard
 {
+public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 5; }
-	CARD_NAME GetName() { return CHIMNEY_IMP; }
-	CARD_TYPE GetType() { return CREATURE; }
+	CARD_NAME GetName() { return CARD_NAME::CHIMNEY_IMP; }
+	CARD_TYPE GetType() { return CARD_TYPE::CREATURE; }
 	char* GetLabel() { return "Chimney Imp"; }
 
 	bool CanCast();
@@ -204,9 +231,12 @@ class ChimneyImp : public BaseCard
 
 class PastInFlames : public BaseCard
 {
+public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 4; }
-	CARD_NAME GetName() { return PAST_IN_FLAMES; }
-	CARD_TYPE GetType() { return SORCERY; }
+	CARD_NAME GetName() { return CARD_NAME::PAST_IN_FLAMES; }
+	CARD_TYPE GetType() { return CARD_TYPE::SORCERY; }
 	char* GetLabel() { return "Past In Flames"; }
 
 	bool CanCast();
@@ -215,9 +245,12 @@ class PastInFlames : public BaseCard
 
 class TendrilsOfAgony : public BaseCard
 {
+public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 4; }
-	CARD_NAME GetName() { return TENDRILS_OF_AGONY; }
-	CARD_TYPE GetType() { return SORCERY; }
+	CARD_NAME GetName() { return CARD_NAME::TENDRILS_OF_AGONY; }
+	CARD_TYPE GetType() { return CARD_TYPE::SORCERY; }
 	char* GetLabel() { return "Tendrils of Agony"; }
 
 	bool CanCast();
@@ -226,9 +259,12 @@ class TendrilsOfAgony : public BaseCard
 
 class SpittingImage : public BaseCard
 {
+public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 6; }
-	CARD_NAME GetName() { return SPITTING_IMAGE; }
-	CARD_TYPE GetType() { return SORCERY; }
+	CARD_NAME GetName() { return CARD_NAME::SPITTING_IMAGE; }
+	CARD_TYPE GetType() { return CARD_TYPE::SORCERY; }
 	char* GetLabel() { return "Spitting Image"; }
 
 	bool CanCast();
@@ -240,9 +276,11 @@ class SpittingImage : public BaseCard
 class GreatWhale : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 7; }
-	CARD_NAME GetName() { return GREAT_WHALE; }
-	CARD_TYPE GetType() { return CREATURE; }
+	CARD_NAME GetName() { return CARD_NAME::GREAT_WHALE; }
+	CARD_TYPE GetType() { return CARD_TYPE::CREATURE; }
 	char* GetLabel() { return "Great Whale"; }
 
 	bool CanCast();
@@ -252,9 +290,11 @@ public:
 class Hoodwink : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 2; }
-	CARD_NAME GetName() { return HOODWINK; }
-	CARD_TYPE GetType() { return INSTANT; }
+	CARD_NAME GetName() { return CARD_NAME::HOODWINK; }
+	CARD_TYPE GetType() { return CARD_TYPE::INSTANT; }
 	char* GetLabel() { return "Hoodwink"; }
 
 	bool CanCast();
@@ -264,9 +304,11 @@ public:
 class BasicLand : public BaseCard
 {
 public:
+	using BaseCard::BaseCard;
+
 	int GetCost() { return 0; }
-	CARD_NAME GetName() { return BASIC_LAND; }
-	CARD_TYPE GetType() { return LAND; }
+	CARD_NAME GetName() { return CARD_NAME::BASIC_LAND; }
+	CARD_TYPE GetType() { return CARD_TYPE::LAND; }
 	char* GetLabel() { return "BASIC_LAND"; }
 
 	bool CanCast();
